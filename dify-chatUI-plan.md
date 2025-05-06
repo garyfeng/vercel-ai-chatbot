@@ -56,25 +56,25 @@
 
  ### 4. Swap Out UI Fetch Calls
  - **Upvote/Downvote** (`components/message-actions.tsx`):
-   ```diff
+  ```
   - fetch('/api/vote', { method: 'PATCH', body: ... })
   + fetch('/chat/vote', { method: 'PATCH', body: ... })
-   ```
+  ```
  - **File Upload** (`components/multimodal-input.tsx`):
-   ```diff
+  ```
   - await fetch('/api/files/upload', { method: 'POST', body: formData })
   + await fetch('/files/upload', { method: 'POST', body: formData })
-   ```
+  ```
  - **Chat History** (`components/chat.tsx`):
-   ```diff
+  ```
   - useSWR(messages.length>=2 ? `/api/vote?chatId=${id}` : null, fetcher);
   + useSWR(messages.length>=2 ? `/chat/vote?chatId=${id}` : null, fetcher);
-   ```
+  ```
  - **Document Endpoints** (`components/artifact.tsx` & `components/version-footer.tsx`):
-   ```diff
+  ```
   - useSWR(`/api/document?id=${documentId}`, fetcher)
   + useSWR(`/document?id=${documentId}`, fetcher)
-   ```
+  ```
 
  ### 5. Remove Next.js API Routes & Server Code
  ```bash
